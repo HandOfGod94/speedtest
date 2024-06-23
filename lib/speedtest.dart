@@ -1,6 +1,4 @@
-import 'dart:convert';
-import 'dart:io';
-import 'package:speedtest/client.dart' as client;
+import 'package:speedtest/httpclient.dart' as http;
 
 class Speedtest {
   final Uri serverSourceURL;
@@ -15,7 +13,7 @@ class Speedtest {
 
   void fetchServers() async {
     try {
-      var response = await client.fetchData(serverSourceURL);
+      var response = await http.fetchData(serverSourceURL);
       print(response);
     } on Exception catch (e) {
       print("Unknown exception: $e");
@@ -24,7 +22,7 @@ class Speedtest {
 
   void fetchClientConfig() async {
     try {
-      var response = await client.fetchData(clientConfigURL);
+      var response = await http.fetchData(clientConfigURL);
       print(response);
     } on Exception catch (e) {
       print("Unknown exception: $e");
